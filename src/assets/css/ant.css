@@ -1,0 +1,23 @@
+/* 
+ * 覆盖Antdv的样式
+ */
+
+/* 表格斑马线 */
+.table-striped td {
+  background-color: #f9f9f9;
+}
+
+.table-striped .ant-table-cell-fix-left,
+.table-striped .ant-table-cell-fix-right {
+  background-color: #f9f9f9 !important;
+}
+
+.table-striped.ant-table-row-selected .ant-table-cell-fix-left,
+.table-striped.ant-table-row-selected .ant-table-cell-fix-right {
+  background-color: #e6f7ff !important;
+}
+
+.table-striped.ant-table-row-selected .ant-table-cell-fix-left.ant-table-cell-row-hover,
+.table-striped.ant-table-row-selected .ant-table-cell-fix-right.ant-table-cell-row-hover {
+  background-color: #a3ddff !important;
+}
