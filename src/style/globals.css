@@ -30,7 +30,7 @@ body {
  */
 @font-face {
   font-family: 'ZQK';
-  src: url('/font/ZQK.ttf') format('truetype');
+  src: url('/poetry-strands-ppt/font/ZQK.ttf') format('truetype');
 }
 
 .font-zqk {
