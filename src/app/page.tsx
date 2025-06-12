@@ -32,18 +32,12 @@ const Home = () => {
       const slideHeight = pptx.height;
 
       // 先获取base64图片
-      const base64Img = await getBase64FromUrl('/poetry-strands-ppt/img/cover_bg.png');
+      const bgImg = await getBase64FromUrl('/poetry-strands-ppt/img/cover_bg.png');
 
       const slide = pptx.addSlide();
 
-      // 用base64图片铺满背景
-      slide.addImage({
-        data: base64Img,
-        x: 0,
-        y: 0,
-        w: slideWidth,
-        h: slideHeight,
-      });
+      // 设置背景图片
+      slide.background = { data: bgImg };
 
       // 添加正中间文本
       slide.addText('诗词串串', {
