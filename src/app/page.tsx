@@ -9,7 +9,7 @@ const Home = async () => {
         </ul>
       </nav>
 
-      <Image src="/img/logo.png" alt="logo" width={180} height={180} priority />
+      <Image src="/poetry-strands-ppt/img/logo.png" alt="logo" width={180} height={180} priority />
 
       <div className="font-zqk text-4xl">
         <h1>自定义字体: Hello World</h1>
