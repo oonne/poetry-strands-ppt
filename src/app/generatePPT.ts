@@ -8,9 +8,9 @@ export const generatePPTContent = async () => {
 
   // 设置布局（16:9）
   pptx.layout = 'LAYOUT_WIDE';
-  // 16:9标准宽高
-  const slideWidth = 10; // 英寸
-  const slideHeight = 5.625; // 英寸
+  // LAYOUT_WIDE标准宽高
+  const slideWidth = 13.3; // 英寸
+  const slideHeight = 7.5; // 英寸
 
   // 获取背景图片
   const bgImg = await getBase64FromUrl('/poetry-strands-ppt/img/cover_bg.png');
@@ -20,12 +20,12 @@ export const generatePPTContent = async () => {
   // 竖排文字内容
   const leftTextArr = ['诗', '词'];
   const rightTextArr = ['串', '串'];
-  const fontSize = 64;
+  const fontSize = 88;
   const fontColor = '555555';
-  const fontFace = 'SimSun'; // 宋体，可换成 'KaiTi' 楷体
-  const textBoxWidth = 1.5; // 单个字的宽度（英寸）
-  const textBoxHeight = 1.5; // 单个字的高度（英寸）
-  const colGap = 1.5; // 两列之间的间距（英寸）
+  const fontFace = 'KaiTi'; // 宋体，可换成 'KaiTi' 楷体
+  const textBoxWidth = 1.3; // 单个字的宽度（英寸）
+  const textBoxHeight = 1.5; // 单个字的高度（英寸），增加间距
+  const colGap = 0.05; // 两列之间的间距（英寸）
 
   // 两列整体宽度
   const totalWidth = textBoxWidth * 2 + colGap;
@@ -36,20 +36,23 @@ export const generatePPTContent = async () => {
   const startX = (slideWidth - totalWidth) / 2;
   const startY = (slideHeight - totalHeight) / 2;
 
+  // 错位设置：左列比右列高一些
+  const leftColumnOffsetY = -0.6; // 左列向上偏移
+  const rightColumnOffsetY = 0; // 右列向下偏移
+
   // 左列"诗词"
   leftTextArr.forEach((char, idx) => {
     slide.addText(char, {
       x: startX,
-      y: startY + idx * textBoxHeight,
+      y: startY + idx * textBoxHeight + leftColumnOffsetY,
       w: textBoxWidth,
       h: textBoxHeight,
       fontSize,
       color: fontColor,
-      bold: true,
+      bold: false,
       align: 'center',
       valign: 'middle',
       fontFace,
-      shadow: { type: 'outer', color: '000000', blur: 5, offset: 2, angle: 45, opacity: 0.5 },
     });
   });
 
@@ -57,16 +60,15 @@ export const generatePPTContent = async () => {
   rightTextArr.forEach((char, idx) => {
     slide.addText(char, {
       x: startX + textBoxWidth + colGap,
-      y: startY + idx * textBoxHeight,
+      y: startY + idx * textBoxHeight + rightColumnOffsetY,
       w: textBoxWidth,
       h: textBoxHeight,
       fontSize,
       color: fontColor,
-      bold: true,
+      bold: false,
       align: 'center',
       valign: 'middle',
       fontFace,
-      shadow: { type: 'outer', color: '000000', blur: 5, offset: 2, angle: 45, opacity: 0.5 },
     });
   });
 
