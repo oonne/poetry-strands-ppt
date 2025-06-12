@@ -17,29 +17,28 @@ const Home = () => {
     };
   }, []);
 
+  /**
+   * 生成PPT
+   */
   const generatePPT = async () => {
     setIsLoading(true);
     try {
       // @ts-expect-error PptxGenJS 挂载在 window 上
       const pptx = new window.PptxGenJS();
-      // 添加一个幻灯片
+
+      // 添加一页
       const slide = pptx.addSlide();
-      // 添加标题
-      slide.addText('诗歌串串', {
+
+      // 添加文本文本
+      slide.addText('新增的文本内容', {
         x: 1,
         y: 1,
-        fontSize: 44,
+        fontSize: 24,
         color: '363636',
         bold: true,
         align: 'center',
       });
-      // 添加内容
-      slide.addText('这是一个示例PPT', {
-        x: 1,
-        y: 2,
-        fontSize: 24,
-        color: '666666',
-      });
+
       // 保存文件
       await pptx.writeFile({ fileName: '诗歌串串.pptx' });
     } catch (error) {
@@ -49,6 +48,9 @@ const Home = () => {
     }
   };
 
+  /**
+   * 渲染页面
+   */
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Image src="/poetry-strands-ppt/img/logo.png" alt="logo" width={180} height={180} priority />
