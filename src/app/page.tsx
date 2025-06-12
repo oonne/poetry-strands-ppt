@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import pptxgen from 'pptxgenjs';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +9,8 @@ const Home = () => {
   const generatePPT = async () => {
     setIsLoading(true);
     try {
+      //
+      const pptxgen = (await import('pptxgenjs')).default;
       const pptx = new pptxgen();
 
       // 添加一个幻灯片
@@ -34,7 +35,7 @@ const Home = () => {
       });
 
       // 保存文件
-      await pptx.writeFile({ fileName: '诗歌串烧.pptx' });
+      await pptx.writeFile({ fileName: '诗歌串串.pptx' });
     } catch (error) {
       console.error('生成PPT时出错:', error);
     } finally {
