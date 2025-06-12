@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import pptxgen from 'pptxgenjs';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const generatePPT = async () => {
     setIsLoading(true);
+
     try {
-      //
-      const pptxgen = (await import('pptxgenjs')).default;
       const pptx = new pptxgen();
 
       // 添加一个幻灯片
