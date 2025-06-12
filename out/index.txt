@@ -1,0 +1,23 @@
+1:"$Sreact.fragment"
+2:I[831,[],""]
+3:I[8307,[],""]
+6:I[9757,[],"MetadataBoundary"]
+8:I[9757,[],"OutletBoundary"]
+b:I[8475,[],"AsyncMetadataOutlet"]
+d:I[9757,[],"ViewportBoundary"]
+f:I[8458,[],""]
+:HL["/poetry-strands-ppt/_next/static/media/569ce4b8f30dc480-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/poetry-strands-ppt/_next/static/media/93f479601ee12b01-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/poetry-strands-ppt/_next/static/css/1fe23ef9e186bf0d.css","style"]
+0:{"P":null,"b":"XDJNLy1iEysO0mld-dYK6","p":"/poetry-strands-ppt","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/poetry-strands-ppt/_next/static/css/1fe23ef9e186bf0d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"__variable_e0f665 __variable_c23c85 antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L4",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",["$","$L6",null,{"children":"$L7"}],null,["$","$L8",null,{"children":["$L9","$La",["$","$Lb",null,{"promise":"$@c"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","wDZqaW4Ca3heW3X3uaeJp",{"children":[["$","$Ld",null,{"children":"$Le"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],null]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+4:E{"digest":"NEXT_REDIRECT;replace;/;307;"}
+10:I[4299,["299","static/chunks/299-cbe7df20fd43aa92.js","974","static/chunks/app/page-1470f1ee575f081c.js"],"Image"]
+11:"$Sreact.suspense"
+12:I[8475,[],"AsyncMetadata"]
+5:["$","main",null,{"className":"flex min-h-screen flex-col items-center justify-between p-24","children":[["$","nav",null,{"children":["$","ul",null,{"children":["$","li",null,{"children":["本地环境变量: ","prod"]}]}]}],["$","$L10",null,{"src":"/poetry-strands-ppt/img/logo.png","alt":"logo","width":180,"height":180,"priority":true}],["$","div",null,{"className":"font-zqk text-4xl","children":["$","h1",null,{"children":"自定义字体: Hello World"}]}]]}]
+7:["$","$11",null,{"fallback":null,"children":["$","$L12",null,{"promise":"$@13"}]}]
+a:null
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+9:null
+13:{"metadata":[["$","title","0",{"children":"Next Demo"}],["$","meta","1",{"name":"description","content":"Next 示例项目 description"}],["$","meta","2",{"name":"keywords","content":"Next"}],["$","link","3",{"rel":"canonical","href":"https://oonne.github.io/poetry-strands-ppt"}],["$","link","4",{"rel":"icon","href":"/poetry-strands-ppt/favicon.ico","type":"image/x-icon","sizes":"48x48"}]],"error":null,"digest":"$undefined"}
+c:{"metadata":"$13:metadata","error":null,"digest":"$undefined"}
