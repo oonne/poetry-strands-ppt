@@ -52,14 +52,18 @@ const generateId = (prefix?: string) => {
 /**
  *  延迟一定时间，单位毫秒。
  */
-const sleep = async (time: number): Promise<void> => new Promise((resolve) => {
-  setTimeout(resolve, time);
-});
+const sleep = async (time: number): Promise<void> =>
+  new Promise(resolve => {
+    setTimeout(resolve, time);
+  });
 
 /**
  * 函数防抖
  */
-const debounce = <T extends (...args: any[]) => any>(fn: T, waitTime: number): ((...args: Parameters<T>) => void) => {
+const debounce = <T extends (...args: any[]) => any>(
+  fn: T,
+  waitTime: number,
+): ((...args: Parameters<T>) => void) => {
   let timer: Timer = null;
 
   return (...args: Parameters<T>) => {
@@ -92,46 +96,65 @@ const getUrlParams = (name: string): string => {
 const getAllUrlParams = (): { [key: string]: string } => {
   const url = window.location.href;
   const queryString = url.split('?')[1] || '';
-  return queryString.split('&').reduce((params, param) => {
-    const [key, value] = param.split('=');
-    if (key) {
-       
-      params[decodeURIComponent(key)] = decodeURIComponent(value || '');
-    }
-    return params;
-  }, {} as { [key: string]: string });
+  return queryString.split('&').reduce(
+    (params, param) => {
+      const [key, value] = param.split('=');
+      if (key) {
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      }
+      return params;
+    },
+    {} as { [key: string]: string },
+  );
 };
 
 /*
  * 获取文件的MD5
  */
-const getFileMd5 = async (file: File): Promise<string> => new Promise((resolve) => {
-  const reader = new FileReader();
-  reader.onload = () => {
-    const wordArray = CryptoJS.lib.WordArray.create(reader.result as ArrayBuffer);
-    const md5 = CryptoJS.MD5(wordArray).toString();
-    resolve(md5);
-  };
-  reader.readAsArrayBuffer(file);
-});
+const getFileMd5 = async (file: File): Promise<string> =>
+  new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const wordArray = CryptoJS.lib.WordArray.create(reader.result as ArrayBuffer);
+      const md5 = CryptoJS.MD5(wordArray).toString();
+      resolve(md5);
+    };
+    reader.readAsArrayBuffer(file);
+  });
 
 /*
  * 16进制的颜色转化为rgb
  */
 const hexToRgb = (hex: string) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16),
-  } : {
-    r: 0,
-    g: 0,
-    b: 0,
-  };
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : {
+        r: 0,
+        g: 0,
+        b: 0,
+      };
 };
 
-/* 
+/**
+ * 将图片url转为base64
+ */
+const getBase64FromUrl = async (url: string): Promise<string> => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+};
+
+/*
  * 导出
  */
 const utils = {
@@ -146,6 +169,7 @@ const utils = {
   getAllUrlParams,
   getFileMd5,
   hexToRgb,
+  getBase64FromUrl,
 };
 
 export default utils;

@@ -2,6 +2,9 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { Utils } from '@/utils/index';
+
+const { getBase64FromUrl } = Utils;
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,21 +28,38 @@ const Home = () => {
     try {
       // @ts-expect-error PptxGenJS 挂载在 window 上
       const pptx = new window.PptxGenJS();
+      const slideWidth = pptx.width;
+      const slideHeight = pptx.height;
 
-      // 添加一页
+      // 先获取base64图片
+      const base64Img = await getBase64FromUrl('/poetry-strands-ppt/img/cover_bg.png');
+
       const slide = pptx.addSlide();
 
-      // 添加文本文本
-      slide.addText('新增的文本内容', {
-        x: 1,
-        y: 1,
-        fontSize: 24,
-        color: '363636',
-        bold: true,
-        align: 'center',
+      // 用base64图片铺满背景
+      slide.addImage({
+        data: base64Img,
+        x: 0,
+        y: 0,
+        w: slideWidth,
+        h: slideHeight,
       });
 
-      // 保存文件
+      // 添加正中间文本
+      slide.addText('诗词串串', {
+        x: 0,
+        y: slideHeight / 2 - 1,
+        w: slideWidth,
+        h: 2,
+        fontSize: 48,
+        color: 'ffffff',
+        bold: true,
+        align: 'center',
+        valign: 'middle',
+        fontFace: '微软雅黑',
+        shadow: { type: 'outer', color: '000000', blur: 5, offset: 2, angle: 45, opacity: 0.5 },
+      });
+
       await pptx.writeFile({ fileName: '诗歌串串.pptx' });
     } catch (error) {
       console.error('生成PPT时出错:', error);
