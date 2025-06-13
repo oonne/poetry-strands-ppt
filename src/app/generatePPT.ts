@@ -25,7 +25,7 @@ const addCoverSlide = async (pptx: any) => {
   const fontColor = '555555';
   const fontFace = 'KaiTi'; // 宋体，可换成 'KaiTi' 楷体
   const textBoxWidth = 1.3; // 单个字的宽度（英寸）
-  const textBoxHeight = 1.5; // 单个字的高度（英寸），增加间距
+  const textBoxHeight = 1.5; // 单个字的高度（英寸）
   const colGap = 0.05; // 两列之间的间距（英寸）
 
   // 两列整体宽度
