@@ -2,15 +2,16 @@ import { Utils } from '@/utils/index';
 
 const { getBase64FromUrl } = Utils;
 
-export const generatePPTContent = async () => {
-  // @ts-expect-error PptxGenJS 挂载在 window 上
-  const pptx = new window.PptxGenJS();
+// 幻灯片宽高常量（英寸）
+export const slideWidth = 13.3;
+export const slideHeight = 7.5;
 
+/*
+ * 生成封面页
+ */
+const addCoverSlide = async (pptx: any) => {
   // 设置布局（16:9）
   pptx.layout = 'LAYOUT_WIDE';
-  // LAYOUT_WIDE标准宽高
-  const slideWidth = 13.3; // 英寸
-  const slideHeight = 7.5; // 英寸
 
   // 获取背景图片
   const bgImg = await getBase64FromUrl('/poetry-strands-ppt/img/cover_bg.png');
@@ -71,11 +72,28 @@ export const generatePPTContent = async () => {
       fontFace,
     });
   });
+};
 
-  // 第二页，背景图片为 page_bg.png，内容留空
+/*
+ * 生成诗词页
+ */
+const addPoetryPageSlide = async (pptx: any) => {
   const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
   const slide2 = pptx.addSlide();
   slide2.background = { data: pageBgImg };
+};
+
+/*
+ * 生成PPT
+ */
+export const generatePPTContent = async () => {
+  // @ts-expect-error PptxGenJS 挂载在 window 上
+  const pptx = new window.PptxGenJS();
+
+  // 生成封面页
+  await addCoverSlide(pptx);
+  // 生成诗词页
+  await addPoetryPageSlide(pptx);
 
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
 };
