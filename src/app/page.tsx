@@ -76,10 +76,10 @@ const Home = () => {
    */
   return (
     <main className="flex min-h-screen flex-col items-center p-8">
-      <Image src="/poetry-strands-ppt/img/logo.png" alt="logo" width={180} height={180} priority />
+      <Image src="/poetry-strands-ppt/img/logo.jpg" alt="logo" width={604} height={267} priority />
 
       <div className="w-full max-w-2xl mt-8">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">诗词编辑</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">PPT生成器</h2>
 
         <div className="space-y-3 max-h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg">
           {poetryInputs.map((poetry, index) => (
