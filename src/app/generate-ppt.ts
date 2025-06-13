@@ -177,23 +177,37 @@ const addEndSlide = async (pptx: any) => {
 /*
  * 生成PPT
  */
-export const generatePPTContent = async (customPoetries?: string[]) => {
+export const generatePPTContent = async (
+  customPoetries?: string[],
+  onProgress?: (progress: number, currentStep: string) => void,
+) => {
   // @ts-expect-error PptxGenJS 挂载在 window 上
   const pptx = new window.PptxGenJS();
 
   // 使用传入的诗词列表，如果没有则使用默认的poetryList
   const poetriesToUse = customPoetries || poetryList;
 
+  // 计算总步骤数：封面页 + 诗词页面数 + 结束页 + 生成文件
+  const totalSteps = 1 + poetriesToUse.length + 1 + 1;
+  let currentStep = 0;
+
   // 生成封面页
+  onProgress?.((++currentStep / totalSteps) * 100, '正在生成封面页...');
   await addCoverSlide(pptx);
 
   // 根据诗词数量生成页面
   for (let i = 0; i < poetriesToUse.length; i++) {
+    onProgress?.((++currentStep / totalSteps) * 100, `正在生成第${i + 1}页诗词页面...`);
     await addPoetryPageSlide(pptx, poetriesToUse[i], poetriesToUse);
   }
 
   // 生成结束页
+  onProgress?.((++currentStep / totalSteps) * 100, '正在生成结束页...');
   await addEndSlide(pptx);
 
+  // 生成文件
+  onProgress?.((++currentStep / totalSteps) * 100, '正在保存PPT文件...');
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
+
+  onProgress?.(100, '生成完成！');
 };

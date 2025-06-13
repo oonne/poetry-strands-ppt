@@ -8,6 +8,9 @@ import poetryList from './poetry-list';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [poetryInputs, setPoemInputs] = useState<string[]>(poetryList);
+  const [progress, setProgress] = useState(0);
+  const [currentStep, setCurrentStep] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     // 动态插入 script
@@ -51,6 +54,10 @@ const Home = () => {
    */
   const generatePPT = async () => {
     setIsLoading(true);
+    setProgress(0);
+    setCurrentStep('');
+    setShowSuccess(false);
+
     try {
       // 过滤空输入框，并截取每行最多9个字符
       const validPoetries = poetryInputs
@@ -62,7 +69,17 @@ const Home = () => {
         return;
       }
 
-      await generatePPTContent(validPoetries);
+      await generatePPTContent(validPoetries, (progressValue, stepText) => {
+        setProgress(progressValue);
+        setCurrentStep(stepText);
+      });
+
+      // 显示成功消息
+      setShowSuccess(true);
+      // 3秒后隐藏成功消息
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
     } catch (error) {
       console.error('生成PPT时出错:', error);
       alert('生成PPT时出错，请重试');
@@ -82,7 +99,7 @@ const Home = () => {
         <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
           <h3 className="text-lg font-semibold text-blue-800 mb-2">🎮 诗词游戏PPT生成器</h3>
           <h4 className="text-gray-700 leading-relaxed">
-            巨好玩的诗词九宫格游戏。将一句诗的每个字打散，需要连接起来还原诗句。适合语文课、班会课、学校诗词大会活动、公司年会等场景。
+            巨好玩的诗词九宫格游戏，好玩到停不下来！将一句诗的每个字打散，需要连接起来还原诗句。适合语文课、班会课、学校诗词大会活动、公司年会等场景。
           </h4>
           <h4 className="text-gray-700 leading-relaxed">
             适合 <b>语文课</b>、<b>班会课</b>、<b>学校诗词大会活动</b>、<b>公司年会</b> 等场景。
@@ -134,6 +151,40 @@ const Home = () => {
             {isLoading ? '生成中...' : '生成PPT'}
           </button>
         </div>
+
+        {/* 进度条 */}
+        {isLoading && (
+          <div className="mt-4 w-full bg-gray-100 rounded-lg p-4">
+            <div className="mb-2 text-sm text-gray-600">{currentStep}</div>
+            <div className="w-full bg-gray-200 rounded-full h-3">
+              <div
+                className="bg-blue-600 h-3 rounded-full transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <div className="mt-2 text-xs text-gray-500 text-right">{Math.round(progress)}%</div>
+          </div>
+        )}
+
+        {/* 成功消息 */}
+        {showSuccess && (
+          <div className="mt-4 bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium text-green-800">生成成功，已自动下载</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="mt-4 text-sm text-gray-600 text-center">
           <p>提示：每句诗词最多使用前9个字符，空白行将被忽略</p>
