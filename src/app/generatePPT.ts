@@ -72,5 +72,10 @@ export const generatePPTContent = async () => {
     });
   });
 
+  // 第二页，背景图片为 page_bg.png，内容留空
+  const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
+  const slide2 = pptx.addSlide();
+  slide2.background = { data: pageBgImg };
+
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
 };
