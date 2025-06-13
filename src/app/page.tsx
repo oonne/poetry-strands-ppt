@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     // 动态插入 script
     const script = document.createElement('script');
-    script.src = '/poetry-strands-ppt/script/pptxgen.bundle.js';
+    script.src = '/poetry-strands-ppt/lib/pptxgen.bundle.js';
     script.async = true;
     document.body.appendChild(script);
     return () => {
