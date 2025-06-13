@@ -107,8 +107,8 @@ const addPoetryPageSlide = async (pptx: any, poetry: string) => {
 
   const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
   const tianImg = await getBase64FromUrl('/poetry-strands-ppt/img/tian.png');
-  const slide2 = pptx.addSlide();
-  slide2.background = { data: pageBgImg };
+  const slide = pptx.addSlide();
+  slide.background = { data: pageBgImg };
 
   // 九宫格参数
   const gridRows = 3;
@@ -131,9 +131,9 @@ const addPoetryPageSlide = async (pptx: any, poetry: string) => {
       const x = startX + col * cellSize;
       const y = startY + row * cellSize;
       // 田字格图片
-      slide2.addImage({ data: tianImg, x, y, w: cellSize, h: cellSize });
+      slide.addImage({ data: tianImg, x, y, w: cellSize, h: cellSize });
       // 居中汉字
-      slide2.addText(char, {
+      slide.addText(char, {
         x,
         y,
         w: cellSize,
@@ -150,6 +150,29 @@ const addPoetryPageSlide = async (pptx: any, poetry: string) => {
 };
 
 /*
+ * 生成结束页
+ */
+const addEndSlide = async (pptx: any) => {
+  const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
+  const slide = pptx.addSlide();
+  slide.background = { data: pageBgImg };
+
+  // 居中大字
+  slide.addText('谢谢观看', {
+    x: 0,
+    y: (slideHeight - 2) / 2, // 竖直居中
+    w: slideWidth,
+    h: 2,
+    fontSize: 72,
+    color: '333333',
+    bold: true,
+    align: 'center',
+    valign: 'middle',
+    fontFace: 'KaiTi',
+  });
+};
+
+/*
  * 生成PPT
  */
 export const generatePPTContent = async () => {
@@ -158,6 +181,7 @@ export const generatePPTContent = async () => {
 
   // 生成封面页
   await addCoverSlide(pptx);
+
   // 生成诗词页，传入一句诗
   await addPoetryPageSlide(pptx, poetryList[0]);
   await addPoetryPageSlide(pptx, poetryList[1]);
@@ -167,6 +191,9 @@ export const generatePPTContent = async () => {
   await addPoetryPageSlide(pptx, poetryList[5]);
   await addPoetryPageSlide(pptx, poetryList[6]);
   await addPoetryPageSlide(pptx, poetryList[7]);
+
+  // 生成结束页
+  await addEndSlide(pptx);
 
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
 };
