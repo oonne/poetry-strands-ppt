@@ -191,8 +191,18 @@ const Home = () => {
         </div>
 
         <div className="mt-6 text-sm text-gray-500 text-center border-t pt-4">
-          <p>
-            作者：
+          <p className="flex items-center justify-center gap-2">
+            <a
+              href="https://github.com/oonne/poetry-strands-ppt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 hover:underline transition-colors inline-flex items-center gap-1"
+            >
+              <Image src="/poetry-strands-ppt/img/github.svg" alt="GitHub" width={16} height={16} />
+              GitHub
+            </a>
+            <span className="mx-2">|</span>
+            作者:
             <a
               href="https://blog.oonne.com"
               target="_blank"
