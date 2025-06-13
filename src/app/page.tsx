@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { generatePPTContent } from './generatePPT';
+import { generatePPTContent } from './generate-ppt';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);

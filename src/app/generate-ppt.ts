@@ -1,4 +1,5 @@
 import { Utils } from '@/utils/index';
+import poetryList from './poetry-list';
 
 const { getBase64FromUrl } = Utils;
 
@@ -75,10 +76,35 @@ const addCoverSlide = async (pptx: any) => {
 };
 
 /*
+ * 从诗词列表中随机获取指定数量的字
+ */
+const getRandomChars = (count: number, existingChars: string[]): string[] => {
+  const allChars = poetryList.join('').split('');
+  // 过滤掉已经存在的字符
+  const availableChars = allChars.filter(char => !existingChars.includes(char));
+  const result: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * availableChars.length);
+    result.push(availableChars[randomIndex]);
+  }
+  return result;
+};
+
+/*
  * 生成诗词页
  */
-const addPoetryPageSlide = async (pptx: any, chars: string[]) => {
-  // chars: 长度为9的汉字数组
+const addPoetryPageSlide = async (pptx: any, poetry: string) => {
+  // 将诗句拆分成字符数组
+  const chars = poetry.split('');
+  // 如果不足9个字，随机补充
+  const remainingChars = 9 - chars.length;
+  if (remainingChars > 0) {
+    chars.push(...getRandomChars(remainingChars, chars));
+  }
+
+  // 随机打乱字符数组
+  chars.sort(() => Math.random() - 0.5);
+
   const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
   const tianImg = await getBase64FromUrl('/poetry-strands-ppt/img/tian.png');
   const slide2 = pptx.addSlide();
@@ -132,8 +158,8 @@ export const generatePPTContent = async () => {
 
   // 生成封面页
   await addCoverSlide(pptx);
-  // 生成诗词页，传入9个汉字
-  await addPoetryPageSlide(pptx, ['头', '日', '明', '月', '前', '上', '山', '光', '床']);
+  // 生成诗词页，传入一句诗
+  await addPoetryPageSlide(pptx, '床前明月光');
 
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
 };
