@@ -159,7 +159,14 @@ export const generatePPTContent = async () => {
   // 生成封面页
   await addCoverSlide(pptx);
   // 生成诗词页，传入一句诗
-  await addPoetryPageSlide(pptx, '床前明月光');
+  await addPoetryPageSlide(pptx, poetryList[0]);
+  await addPoetryPageSlide(pptx, poetryList[1]);
+  await addPoetryPageSlide(pptx, poetryList[2]);
+  await addPoetryPageSlide(pptx, poetryList[3]);
+  await addPoetryPageSlide(pptx, poetryList[4]);
+  await addPoetryPageSlide(pptx, poetryList[5]);
+  await addPoetryPageSlide(pptx, poetryList[6]);
+  await addPoetryPageSlide(pptx, poetryList[7]);
 
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
 };
