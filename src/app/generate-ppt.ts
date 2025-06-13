@@ -78,8 +78,12 @@ const addCoverSlide = async (pptx: any) => {
 /*
  * 从诗词列表中随机获取指定数量的字
  */
-const getRandomChars = (count: number, existingChars: string[]): string[] => {
-  const allChars = poetryList.join('').split('');
+const getRandomChars = (
+  count: number,
+  existingChars: string[],
+  sourcePoetries: string[] = poetryList,
+): string[] => {
+  const allChars = sourcePoetries.join('').split('');
   // 过滤掉已经存在的字符
   const availableChars = allChars.filter(char => !existingChars.includes(char));
   const result: string[] = [];
@@ -93,13 +97,17 @@ const getRandomChars = (count: number, existingChars: string[]): string[] => {
 /*
  * 生成诗词页
  */
-const addPoetryPageSlide = async (pptx: any, poetry: string) => {
+const addPoetryPageSlide = async (
+  pptx: any,
+  poetry: string,
+  sourcePoetries: string[] = poetryList,
+) => {
   // 将诗句拆分成字符数组
   const chars = poetry.split('');
   // 如果不足9个字，随机补充
   const remainingChars = 9 - chars.length;
   if (remainingChars > 0) {
-    chars.push(...getRandomChars(remainingChars, chars));
+    chars.push(...getRandomChars(remainingChars, chars, sourcePoetries));
   }
 
   // 随机打乱字符数组
@@ -169,22 +177,20 @@ const addEndSlide = async (pptx: any) => {
 /*
  * 生成PPT
  */
-export const generatePPTContent = async () => {
+export const generatePPTContent = async (customPoetries?: string[]) => {
   // @ts-expect-error PptxGenJS 挂载在 window 上
   const pptx = new window.PptxGenJS();
+
+  // 使用传入的诗词列表，如果没有则使用默认的poetryList
+  const poetriesToUse = customPoetries || poetryList;
 
   // 生成封面页
   await addCoverSlide(pptx);
 
-  // 生成诗词页，传入一句诗
-  await addPoetryPageSlide(pptx, poetryList[0]);
-  await addPoetryPageSlide(pptx, poetryList[1]);
-  await addPoetryPageSlide(pptx, poetryList[2]);
-  await addPoetryPageSlide(pptx, poetryList[3]);
-  await addPoetryPageSlide(pptx, poetryList[4]);
-  await addPoetryPageSlide(pptx, poetryList[5]);
-  await addPoetryPageSlide(pptx, poetryList[6]);
-  await addPoetryPageSlide(pptx, poetryList[7]);
+  // 根据诗词数量生成页面
+  for (let i = 0; i < poetriesToUse.length; i++) {
+    await addPoetryPageSlide(pptx, poetriesToUse[i], poetriesToUse);
+  }
 
   // 生成结束页
   await addEndSlide(pptx);
