@@ -154,22 +154,16 @@ const addPoetryPageSlide = async (pptx: any, poetry: string) => {
  */
 const addEndSlide = async (pptx: any) => {
   const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
+  const logoImg = await getBase64FromUrl('/poetry-strands-ppt/img/poetry-strands.png');
   const slide = pptx.addSlide();
   slide.background = { data: pageBgImg };
 
-  // 居中大字
-  slide.addText('谢谢观看', {
-    x: 0,
-    y: (slideHeight - 2) / 2, // 竖直居中
-    w: slideWidth,
-    h: 2,
-    fontSize: 72,
-    color: '333333',
-    bold: true,
-    align: 'center',
-    valign: 'middle',
-    fontFace: 'KaiTi',
-  });
+  // 居中显示logo图片
+  const imgWidth = 9; // 图片宽度（英寸），可根据实际图片比例调整
+  const imgHeight = 5.52; // 图片高度（英寸），可根据实际图片比例调整
+  const x = (slideWidth - imgWidth) / 2;
+  const y = (slideHeight - imgHeight) / 2;
+  slide.addImage({ data: logoImg, x, y, w: imgWidth, h: imgHeight });
 };
 
 /*
