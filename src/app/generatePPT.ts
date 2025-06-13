@@ -21,7 +21,7 @@ const addCoverSlide = async (pptx: any) => {
   // 竖排文字内容
   const leftTextArr = ['诗', '词'];
   const rightTextArr = ['串', '串'];
-  const fontSize = 88;
+  const fontSize = 96;
   const fontColor = '555555';
   const fontFace = 'KaiTi'; // 宋体，可换成 'KaiTi' 楷体
   const textBoxWidth = 1.3; // 单个字的宽度（英寸）
@@ -77,10 +77,50 @@ const addCoverSlide = async (pptx: any) => {
 /*
  * 生成诗词页
  */
-const addPoetryPageSlide = async (pptx: any) => {
+const addPoetryPageSlide = async (pptx: any, chars: string[]) => {
+  // chars: 长度为9的汉字数组
   const pageBgImg = await getBase64FromUrl('/poetry-strands-ppt/img/page_bg.png');
+  const tianImg = await getBase64FromUrl('/poetry-strands-ppt/img/tian.png');
   const slide2 = pptx.addSlide();
   slide2.background = { data: pageBgImg };
+
+  // 九宫格参数
+  const gridRows = 3;
+  const gridCols = 3;
+  const cellSize = 2.1; // 每个田字格的宽高（英寸），可根据实际调整
+  const gridWidth = cellSize * gridCols;
+  const gridHeight = cellSize * gridRows;
+  const startX = (slideWidth - gridWidth) / 2;
+  const startY = (slideHeight - gridHeight) / 2;
+
+  // 字体参数
+  const fontSize = 60;
+  const fontColor = '222222';
+  const fontFace = 'KaiTi';
+
+  for (let row = 0; row < gridRows; row++) {
+    for (let col = 0; col < gridCols; col++) {
+      const idx = row * gridCols + col;
+      const char = chars[idx] || '';
+      const x = startX + col * cellSize;
+      const y = startY + row * cellSize;
+      // 田字格图片
+      slide2.addImage({ data: tianImg, x, y, w: cellSize, h: cellSize });
+      // 居中汉字
+      slide2.addText(char, {
+        x,
+        y,
+        w: cellSize,
+        h: cellSize,
+        fontSize,
+        color: fontColor,
+        bold: true,
+        align: 'center',
+        valign: 'middle',
+        fontFace,
+      });
+    }
+  }
 };
 
 /*
@@ -92,8 +132,8 @@ export const generatePPTContent = async () => {
 
   // 生成封面页
   await addCoverSlide(pptx);
-  // 生成诗词页
-  await addPoetryPageSlide(pptx);
+  // 生成诗词页，传入9个汉字
+  await addPoetryPageSlide(pptx, ['头', '日', '明', '月', '前', '上', '山', '光', '床']);
 
   await pptx.writeFile({ fileName: '诗歌串串.pptx' });
 };
