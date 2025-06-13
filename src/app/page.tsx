@@ -79,7 +79,15 @@ const Home = () => {
       <Image src="/poetry-strands-ppt/img/logo.jpg" alt="logo" width={604} height={267} priority />
 
       <div className="w-full max-w-2xl mt-8">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">PPT生成器</h2>
+        <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+          <h3 className="text-lg font-semibold text-blue-800 mb-2">🎮 诗词游戏PPT生成器</h3>
+          <h4 className="text-gray-700 leading-relaxed">
+            巨好玩的诗词九宫格游戏。将一句诗的每个字打散，需要连接起来还原诗句。适合语文课、班会课、学校诗词大会活动、公司年会等场景。
+          </h4>
+          <h4 className="text-gray-700 leading-relaxed">
+            适合 <b>语文课</b>、<b>班会课</b>、<b>学校诗词大会活动</b>、<b>公司年会</b> 等场景。
+          </h4>
+        </div>
 
         <div className="space-y-3 max-h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg">
           {poetryInputs.map((poetry, index) => (
@@ -129,6 +137,20 @@ const Home = () => {
 
         <div className="mt-4 text-sm text-gray-600 text-center">
           <p>提示：每句诗词最多使用前9个字符，空白行将被忽略</p>
+        </div>
+
+        <div className="mt-6 text-sm text-gray-500 text-center border-t pt-4">
+          <p>
+            作者：
+            <a
+              href="https://blog.oonne.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 hover:underline transition-colors"
+            >
+              工程师加一
+            </a>
+          </p>
         </div>
       </div>
     </main>
