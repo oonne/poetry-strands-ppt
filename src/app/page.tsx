@@ -104,7 +104,9 @@ const Home = () => {
           </h1>
           <div className="bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg p-6">
             <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p>巨好玩的诗词九宫格游戏，规则简单，好玩到停不下来！</p>
+              <p>
+                巨好玩的诗词九宫格游戏，规则简单，好玩到停不下来！语文老师必背的古诗词小游戏课件！
+              </p>
               <p>
                 <strong>🎯 游戏目标：</strong>将打散的诗词字符重新连接，还原完整的诗句。
               </p>
@@ -135,11 +137,11 @@ const Home = () => {
           <div className="bg-green-50 border-l-4 border-green-400 rounded-r-lg p-6">
             <div className="text-center space-y-4">
               <p className="text-gray-700 leading-relaxed">
-                如果您需要自定义PPT模板或想要了解更多样式选项，可以下载我们的基础模板：
+                精美的模板，内置题库，可直接下载使用。诗词内容可编辑，可轻松添加自己想要的诗词。
               </p>
               <div className="flex justify-center gap-4">
                 <a
-                  href="/poetry-strands-ppt/template/poetry-game-template.pptx"
+                  href="/poetry-strands-ppt/pptx/诗词串串.pptx"
                   download
                   className="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg"
                 >
@@ -152,25 +154,7 @@ const Home = () => {
                   </svg>
                   下载PPT模板
                 </a>
-                <a
-                  href="https://github.com/oonne/poetry-strands-ppt/tree/main/template"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg"
-                >
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  查看更多模板
-                </a>
               </div>
-              <p className="text-sm text-gray-600">
-                模板包含多种风格设计，您可以根据需要进行自定义修改
-              </p>
             </div>
           </div>
         </section>
@@ -183,8 +167,8 @@ const Home = () => {
           <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-6 mb-6">
             <div className="text-gray-700 leading-relaxed space-y-3">
               <p>可自定义诗词，一件生成PPT。</p>
-              <p>每句诗词最多使用前9个字符，空白行将被忽略</p>
-              <p>下方列表支持滚动，自定义添加的诗句在最下方</p>
+              <p>每句诗词最多使用前9个字符，空白行将被忽略。</p>
+              <p>下方列表支持滚动，自定义添加的诗句在最下方。</p>
             </div>
           </div>
 
@@ -282,7 +266,7 @@ const Home = () => {
               GitHub
             </a>
             <span className="mx-2">|</span>
-            作者:
+            作者微信公众号:
             <a
               href="https://blog.oonne.com"
               target="_blank"
