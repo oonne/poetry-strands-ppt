@@ -187,7 +187,7 @@ const Home = () => {
         )}
 
         <div className="mt-4 text-sm text-gray-600 text-center">
-          <p>提示：每句诗词最多使用前9个字符，空白行将被忽略</p>
+          <p>注意：每句诗词最多使用前9个字符，空白行将被忽略</p>
         </div>
 
         <div className="mt-6 text-sm text-gray-500 text-center border-t pt-4">
