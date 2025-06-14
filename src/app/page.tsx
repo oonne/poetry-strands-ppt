@@ -166,7 +166,7 @@ const Home = () => {
           </h1>
           <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-6 mb-6">
             <div className="text-gray-700 leading-relaxed space-y-3">
-              <p>可自定义诗词，一件生成PPT。</p>
+              <p>可自定义诗词，一键生成PPT。</p>
               <p>每句诗词最多使用前9个字符，空白行将被忽略。</p>
               <p>下方列表支持滚动，自定义添加的诗句在最下方。</p>
             </div>
