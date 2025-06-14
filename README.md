@@ -26,6 +26,7 @@
 <img src="public/preview/ppt3.jpg" alt="PPT模板预览3" width="300"/>
 <img src="public/preview/PPT4.jpg" alt="PPT模板预览4" width="300"/>
 <img src="public/preview/ppt5.jpg" alt="PPT模板预览5" width="300"/>
+<img src="public/preview/ppt6.jpg" alt="PPT模板预览6" width="300"/>
 
 ## 🚀 PPT生成器
 

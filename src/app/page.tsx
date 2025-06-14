@@ -139,7 +139,67 @@ const Home = () => {
               <p className="text-gray-700 leading-relaxed">
                 精美的模板，内置题库，可直接下载使用。诗词内容可编辑，可轻松添加自己想要的诗词。
               </p>
-              <div className="flex justify-center gap-4">
+              {/* PPT预览图片 */}
+              <div className="mt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <Image
+                      src="/poetry-strands-ppt/preview/PPT1.jpg"
+                      alt="PPT预览1"
+                      width={300}
+                      height={225}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <Image
+                      src="/poetry-strands-ppt/preview/PPT2.jpg"
+                      alt="PPT预览2"
+                      width={300}
+                      height={225}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <Image
+                      src="/poetry-strands-ppt/preview/ppt3.jpg"
+                      alt="PPT预览3"
+                      width={300}
+                      height={225}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <Image
+                      src="/poetry-strands-ppt/preview/PPT4.jpg"
+                      alt="PPT预览4"
+                      width={300}
+                      height={225}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <Image
+                      src="/poetry-strands-ppt/preview/ppt5.jpg"
+                      alt="PPT预览5"
+                      width={300}
+                      height={225}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <Image
+                      src="/poetry-strands-ppt/preview/ppt6.jpg"
+                      alt="PPT预览6"
+                      width={300}
+                      height={225}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* 下载按钮 */}
+              <div className="flex justify-center gap-4 mb-6">
                 <a
                   href="/poetry-strands-ppt/pptx/诗词串串.pptx"
                   download
@@ -154,7 +214,7 @@ const Home = () => {
                   </svg>
                   下载PPT模板
                 </a>
-              </div>
+              </div>{' '}
             </div>
           </div>
         </section>
