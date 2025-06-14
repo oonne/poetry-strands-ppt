@@ -105,7 +105,7 @@ const Home = () => {
           <div className="bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg p-6">
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                巨好玩的诗词九宫格游戏，规则简单，好玩到停不下来！语文老师必背的古诗词小游戏课件！
+                巨好玩的诗词九宫格游戏，规则简单，好玩到停不下来！语文老师必备的古诗词小游戏课件！
               </p>
               <p>
                 <strong>🎯 游戏目标：</strong>将打散的诗词字符重新连接，还原完整的诗句。
