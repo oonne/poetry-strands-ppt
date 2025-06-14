@@ -144,7 +144,7 @@ const Home = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <Image
-                      src="/poetry-strands-ppt/preview/PPT1.jpg"
+                      src="/poetry-strands-ppt/preview/ppt_1.jpg"
                       alt="PPT预览1"
                       width={300}
                       height={225}
@@ -153,7 +153,7 @@ const Home = () => {
                   </div>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <Image
-                      src="/poetry-strands-ppt/preview/PPT2.jpg"
+                      src="/poetry-strands-ppt/preview/ppt_2.jpg"
                       alt="PPT预览2"
                       width={300}
                       height={225}
@@ -162,7 +162,7 @@ const Home = () => {
                   </div>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <Image
-                      src="/poetry-strands-ppt/preview/ppt3.jpg"
+                      src="/poetry-strands-ppt/preview/ppt_3.jpg"
                       alt="PPT预览3"
                       width={300}
                       height={225}
@@ -171,7 +171,7 @@ const Home = () => {
                   </div>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <Image
-                      src="/poetry-strands-ppt/preview/PPT4.jpg"
+                      src="/poetry-strands-ppt/preview/ppt_4.jpg"
                       alt="PPT预览4"
                       width={300}
                       height={225}
@@ -180,7 +180,7 @@ const Home = () => {
                   </div>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <Image
-                      src="/poetry-strands-ppt/preview/ppt5.jpg"
+                      src="/poetry-strands-ppt/preview/ppt_5.jpg"
                       alt="PPT预览5"
                       width={300}
                       height={225}
@@ -189,7 +189,7 @@ const Home = () => {
                   </div>
                   <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <Image
-                      src="/poetry-strands-ppt/preview/ppt6.jpg"
+                      src="/poetry-strands-ppt/preview/ppt_6.jpg"
                       alt="PPT预览6"
                       width={300}
                       height={225}
